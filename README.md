@@ -69,7 +69,9 @@ Streamlit should open the simulator in your web browser.
 Project Structure
 torque-equilibrium-simulator/
 ├── app.py
+
 ├── requirements.txt
+
 └── README.md
 
 app.py contains the interface, visualization, equilibrium solver, and torque calculations.
