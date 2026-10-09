@@ -41,15 +41,15 @@ Torque = Distance × Force
 
 In symbols:
 
-τ = rF
+## τ = rF
 
 The gravitational force acting on a mass is:
 
-Force = Mass × Gravity
+## Force = Mass × Gravity
 
 ## Therefore, the simulator calculates torque using:
 
-τ = rmg
+## τ = rmg
 
 where:
 
