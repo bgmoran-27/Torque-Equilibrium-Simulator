@@ -1,11 +1,11 @@
 # Torque-Equilibrium-Simulator
 Torque is an essential concept in physics, but when you first encounter it, visualizing what it means in a real physical system can be challenging. This simulator is designed to make torque easier to understand. Change the masses, their positions, and the pivot point to see how each variable affects torque, rotational direction, and equilibrium.
 
-##Live Demo
+## Live Demo
 A deployed version of the simulator will be available here:
 (STREAMLIT) //Deployment of app will occur soon
 
-##Features
+## Features
 
 Add between 1 and 10 masses to a beam.
 
@@ -31,7 +31,7 @@ Solve for the position required to reach equilibrium.
 
 Detect when the required equilibrium position is outside the beam.
 
-##How the Physics Works
+## How the Physics Works
 
 Torque measures the turning effect produced by a force around a pivot.
 
@@ -51,7 +51,7 @@ Therefore, the simulator calculates torque using:
 
 τ = rmg
 
-##where:
+## where:
 
 τ is torque in newton-meters (N·m).
 
@@ -72,7 +72,7 @@ A mass directly on the pivot produces zero torque.
 The system is considered approximately balanced when the net torque is close to zero.
 
 
-##How to Use the Simulator
+## How to Use the Simulator
 
 Select the position of the pivot.
 
@@ -91,9 +91,9 @@ Examine the beam visualization and torque results.
 Enable Solve for an equilibrium position if you want the simulator to calculate where one selected mass 
 should be placed.
 
-##Running the Project Locally
+## Running the Project Locally
 
-#Requirements:
+# Requirements:
 
 Python
 
@@ -107,13 +107,13 @@ Install Streamlit if it is not already installed:
 
 py -m pip install streamlit
 
-##Run the simulator
+## Run the simulator
 
 py -m streamlit run app.py
 
 Streamlit should open the simulator in your web browser.
 
-##Project Structure
+## Project Structure
 
 torque-equilibrium-simulator/
 
@@ -130,7 +130,7 @@ requirements.txt tells the deployment service which Python packages the project 
 
 README.md contains the project documentation.
 
-##Technologies Used
+## Technologies Used
 
 Python
 
@@ -145,7 +145,7 @@ information from the appropriate official mint or central bank.
 
 Users can also select Custom mass to experiment with objects that are not included in the coin presets.
 
-##Limitations
+## Limitations
 
 The beam is treated as rigid and massless.
 
@@ -157,7 +157,7 @@ The visualization represents the setup but does not simulate continuous physical
 
 Coin specifications may change or differ between historical coin series.
 
-##Possible Future Improvements
+## Possible Future Improvements
 
 Allow the beam length to be changed.
 
@@ -173,7 +173,7 @@ Add practice problems or a quiz mode.
 
 Improve the layout for mobile devices.
 
-##Author
+## Author
 
 Created by Bryan Gaborit-Moran as an interactive project for learning about torque and rotational equilibrium.
 
