@@ -37,9 +37,9 @@ Torque measures the turning effect produced by a force around a pivot.
 
 The basic torque equation is:
 
-Torque = Distance × Force (## τ = rF)
+Torque = Distance × Force (τ = rF)
 
-The gravitational force acting on a mass is:  ## Force = Mass × Gravity
+The gravitational force acting on a mass is:  Force = Mass × Gravity
 
 ## Therefore, the simulator calculates torque using:
 
