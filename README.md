@@ -47,11 +47,11 @@ The gravitational force acting on a mass is:
 
 Force = Mass × Gravity
 
-Therefore, the simulator calculates torque using:
+## Therefore, the simulator calculates torque using:
 
 τ = rmg
 
-## where:
+where:
 
 τ is torque in newton-meters (N·m).
 
@@ -91,9 +91,9 @@ Examine the beam visualization and torque results.
 Enable Solve for an equilibrium position if you want the simulator to calculate where one selected mass 
 should be placed.
 
-## Running the Project Locally
+# Running the Project Locally
 
-# Requirements:
+## Requirements:
 
 Python
 
