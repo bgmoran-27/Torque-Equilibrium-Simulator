@@ -1,4 +1,5 @@
 import streamlit as st  # Imports Streamlit so we can create the controls, messages, and webpage
+from streamlit.components.v1 import html  # Displays the SVG inside a dedicated HTML frame
 
 GRAVITY = 9.81  # Gravitational acceleration in meters per second squared
 BEAM_LENGTH = 0.50  # The beam extends from 0.00 meters to 0.50 meters
@@ -252,7 +253,11 @@ if solve_mode:
 
 st.subheader("Beam visualization")
 
-st.html(draw_beam(masses, pivot))  # Displays the completed SVG instead of treating it as Markdown code
+html(
+    f'<style>body {{ margin: 0; background-color: transparent; }}</style>{draw_beam(masses, pivot)}',
+    height=260,
+    scrolling=False,
+)  # Displays the complete beam visualization inside an HTML frame
 
 st.caption(
     "Each numbered circle is a mass. "
