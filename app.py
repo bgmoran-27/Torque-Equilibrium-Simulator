@@ -264,9 +264,7 @@ if solve_mode:
 st.subheader("Beam visualization")
 
 st.markdown(
-    draw_beam(masses, pivot),
-    unsafe_allow_html=True,
-)  # Displays the SVG beam
+    draw_beam(masses, pivot),   unsafe_allow_html=True, )  # Displays the SVG beam
 
 st.caption(
     "Each numbered circle is a mass. "
