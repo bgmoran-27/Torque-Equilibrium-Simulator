@@ -102,29 +102,18 @@ def draw_beam(masses, pivot):  # Creates the SVG beam visualization
             f'<text x="{x:.1f}" y="57" text-anchor="middle" fill="#334155" font-size="12">{mass:g} g</text>'
         )
 
-    pivot_x = x_position(pivot)  # Converts the pivot position into an SVG coordinate
+       pivot_x = x_position(pivot)  # Converts the pivot position into an SVG coordinate
 
-    return f"""
-    <svg viewBox="0 0 {width} 245" width="100%" role="img" aria-label="Beam with masses and pivot">
-        <rect x="{beam_left}" y="{beam_y - 7}" width="{beam_right - beam_left}" height="14" rx="7" fill="#64748b" />
+    svg = f'<svg viewBox="0 0 {width} 245" width="100%" role="img" aria-label="Beam with masses and pivot">'  # Starts the SVG without Markdown-breaking indentation
+    svg += f'<rect x="{beam_left}" y="{beam_y - 7}" width="{beam_right - beam_left}" height="14" rx="7" fill="#64748b" />'  # Draws the beam
+    svg += "".join(mass_shapes)  # Adds every hanging mass to the drawing
+    svg += f'<polygon points="{pivot_x:.1f},{beam_y + 8} {pivot_x - 25:.1f},220 {pivot_x + 25:.1f},220" fill="#0f172a" />'  # Draws the triangular pivot
+    svg += f'<text x="{pivot_x:.1f}" y="239" text-anchor="middle" fill="#334155" font-size="12">pivot: {pivot:.2f} m</text>'  # Labels the pivot
+    svg += f'<text x="{beam_left}" y="201" text-anchor="middle" fill="#64748b" font-size="11">0.00 m</text>'  # Labels the left end
+    svg += f'<text x="{beam_right}" y="201" text-anchor="middle" fill="#64748b" font-size="11">{BEAM_LENGTH:.2f} m</text>'  # Labels the right end
+    svg += '</svg>'  # Closes the SVG
 
-        {''.join(mass_shapes)}
-
-        <polygon points="{pivot_x:.1f},{beam_y + 8} {pivot_x - 25:.1f},220 {pivot_x + 25:.1f},220" fill="#0f172a" />
-
-        <text x="{pivot_x:.1f}" y="239" text-anchor="middle" fill="#334155" font-size="12">
-            pivot: {pivot:.2f} m
-        </text>
-
-        <text x="{beam_left}" y="201" text-anchor="middle" fill="#64748b" font-size="11">
-            0.00 m
-        </text>
-
-        <text x="{beam_right}" y="201" text-anchor="middle" fill="#64748b" font-size="11">
-            {BEAM_LENGTH:.2f} m
-        </text>
-    </svg>
-    """
+    return svg
 
 
 st.title("Torque Balance Simulator")  # Main webpage heading
@@ -263,14 +252,12 @@ if solve_mode:
 
 st.subheader("Beam visualization")
 
-st.markdown(
-    draw_beam(masses, pivot),   unsafe_allow_html=True, )  # Displays the SVG beam
+st.html(draw_beam(masses, pivot))  # Displays the completed SVG instead of treating it as Markdown code
 
 st.caption(
     "Each numbered circle is a mass. "
     "Change any input above and the diagram updates automatically."
 )
-
 
 if solution_error:
     st.error(solution_error)
