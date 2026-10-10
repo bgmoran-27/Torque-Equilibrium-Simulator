@@ -83,17 +83,17 @@ def draw_beam(masses, pivot):  # Creates the SVG beam visualization
 
     colors = ["#2563eb", "#dc2626", "#16a34a", "#9333ea", "#ea580c"]  # Colors used for the masses
 
-    def x_position(position):  # Converts a position in meters into an SVG screen coordinate
+    def x_position(position):  # Converts meters into an SVG screen coordinate
         return beam_left + (position / BEAM_LENGTH) * (beam_right - beam_left)
 
-    mass_shapes = []  # Stores the SVG drawing instructions for every mass
+    mass_shapes = []  # Stores the SVG instructions for every mass
 
     for index, (mass, position) in enumerate(masses, start=1):
         if position is None:  # Skips an unknown position until the solver calculates it
             continue
 
         x = x_position(position)  # Finds the horizontal drawing location
-        color = colors[(index - 1) % len(colors)]  # Repeats colors when there are more than five masses
+        color = colors[(index - 1) % len(colors)]  # Repeats colors when necessary
 
         mass_shapes.append(
             f'<line x1="{x:.1f}" y1="{beam_y}" x2="{x:.1f}" y2="105" stroke="{color}" stroke-width="3" />'
@@ -102,16 +102,16 @@ def draw_beam(masses, pivot):  # Creates the SVG beam visualization
             f'<text x="{x:.1f}" y="57" text-anchor="middle" fill="#334155" font-size="12">{mass:g} g</text>'
         )
 
-       pivot_x = x_position(pivot)  # Converts the pivot position into an SVG coordinate
+    pivot_x = x_position(pivot)  # Converts the pivot position into an SVG coordinate
 
-    svg = f'<svg viewBox="0 0 {width} 245" width="100%" role="img" aria-label="Beam with masses and pivot">'  # Starts the SVG without Markdown-breaking indentation
-    svg += f'<rect x="{beam_left}" y="{beam_y - 7}" width="{beam_right - beam_left}" height="14" rx="7" fill="#64748b" />'  # Draws the beam
-    svg += "".join(mass_shapes)  # Adds every hanging mass to the drawing
-    svg += f'<polygon points="{pivot_x:.1f},{beam_y + 8} {pivot_x - 25:.1f},220 {pivot_x + 25:.1f},220" fill="#0f172a" />'  # Draws the triangular pivot
-    svg += f'<text x="{pivot_x:.1f}" y="239" text-anchor="middle" fill="#334155" font-size="12">pivot: {pivot:.2f} m</text>'  # Labels the pivot
-    svg += f'<text x="{beam_left}" y="201" text-anchor="middle" fill="#64748b" font-size="11">0.00 m</text>'  # Labels the left end
-    svg += f'<text x="{beam_right}" y="201" text-anchor="middle" fill="#64748b" font-size="11">{BEAM_LENGTH:.2f} m</text>'  # Labels the right end
-    svg += '</svg>'  # Closes the SVG
+    svg = f'<svg viewBox="0 0 {width} 245" width="100%" role="img" aria-label="Beam with masses and pivot">'
+    svg += f'<rect x="{beam_left}" y="{beam_y - 7}" width="{beam_right - beam_left}" height="14" rx="7" fill="#64748b" />'
+    svg += "".join(mass_shapes)
+    svg += f'<polygon points="{pivot_x:.1f},{beam_y + 8} {pivot_x - 25:.1f},220 {pivot_x + 25:.1f},220" fill="#0f172a" />'
+    svg += f'<text x="{pivot_x:.1f}" y="239" text-anchor="middle" fill="#334155" font-size="12">pivot: {pivot:.2f} m</text>'
+    svg += f'<text x="{beam_left}" y="201" text-anchor="middle" fill="#64748b" font-size="11">0.00 m</text>'
+    svg += f'<text x="{beam_right}" y="201" text-anchor="middle" fill="#64748b" font-size="11">{BEAM_LENGTH:.2f} m</text>'
+    svg += '</svg>'
 
     return svg
 
